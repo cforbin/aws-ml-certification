@@ -91,9 +91,61 @@ When you have data in diverse data repositories, you may want to
 - S3 was covered in **CHAPTER 2** of this book.
 - How migrate data to S3?  See next section.
 
+ ## AWS data sources
+ 
+ Covered in great detail in Solution Architect Exams  (Associate)
+ 
+
+*For the exam, you should have a basic familiarity with the different AWS data storage solutions.*
+
 # DATA MIGRATION TO AWS
 
+- Once your data lands in AWS, you need to move the data to Amazon S3 in order to train ML models. 
+- If your data is already on S3, then you’re all set.
+- There are different migration tools available on AWS to move your data to S3.
+- There are 2 use cases for migrating data onto AWS: 
+  - batch data
+  - streaming data
+
+
 ## BATCH DATA COLLECTION
+
+
+## AWS DATA PIPELINE
+
+- Use **AWS Data Pipeline** if your data is already on AWS:
+- from Redshift, DynamoDB, or RDS 
+- to S3.
+
+- An activity type is a pipeline component that tells Data Pipeline what job to perform.
+- Data Pipeline has some prebuilt activity types
+  - CopyActivity   (S3 to S3)
+  - RedshiftCopyActivity (Redshift to S3)
+  - SqlActivity (SQL query to S3)
+  
+- To use AWS Data Pipeline, you create a **pipeline definition**, which consists of:
+  - activities
+  - data nodes
+  - schedule  
+  
+- [List of activities](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-concepts-activities.html):
+  - CopyActivity: Copies data from one location to another.
+  - EmrActivity: Runs an Amazon EMR cluster.
+  - HiveActivity: Runs a Hive query on an Amazon EMR cluster.
+  - HiveCopyActivity: Runs a Hive query on an Amazon EMR cluster with support for advanced data filtering and support for S3DataNode and DynamoDBDataNode.
+  - PigActivity: Runs a Pig script on an Amazon EMR cluster.
+  - RedshiftCopyActivity: Copies data to and from Amazon Redshift tables.
+  - ShellCommandActivity: Runs a custom UNIX/Linux shell command as an activity.
+  - SqlActivity: Runs a SQL query on a database.
+
+- List of nodes:
+  - DynamoDBDataNode: a DynamoDB table that contains data for HiveActivity or EmrActivity to use.
+  - SqlDataNode: an SQL table and database query that represent data for a pipeline activity to use.
+  - RedshiftDataNode: an Amazon Redshift table that contains data for RedshiftCopyActivity to use.
+  - S3DataNode: an Amazon S3 location that contains one or more files for a pipeline activity to use.
+
+Once your data is in S3, you can run ETL jobs on the data using Amazon EMR.
+
 
 ### AWS RDS
 
@@ -129,6 +181,8 @@ In this chapter, we covered:
   - streaming
 
 # RECOMMENDED
+
+
 
 *We recommend that you go over the FAQs for AWS Data Pipeline, AWS
 Glue, and AWS DMS prior to taking the test.*
