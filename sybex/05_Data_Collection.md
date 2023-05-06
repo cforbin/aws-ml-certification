@@ -3,13 +3,13 @@
 
 Data Collection
 - [Basic Data Concepts](#basic-data-concepts)
-- Data Repositories
-- Data Migration to AWS
+- [Data Repositories](#data-repositories)
+- [Data Migration to AWS](#data-migration-to-aws)
   - Batch Data Collection
   - Streaming Data Collection
 - [Summary](#summary)
-- Exam Essentials
-- Review Questions
+- [Exam Essentials](#exam-essentials)
+- [Review Questions](#review-questions
 
 # BASIC DATA CONCEPTS
 
@@ -317,10 +317,44 @@ In this chapter, we covered:
 [FAQ AWS RDS](https://aws.amazon.com/rds/faqs/)
 
 
-
-
 # EXAM ESSENTIALS
 
+1. CRISP-DM: where data collection fits
+2. Kinds of data: strucuted, semi-structured, unstructured.  Examples
+3. Training, validation, and test data.
+4. Continuous and categorical features
+5. Data Pipeline **vs** Database Migration Service
+6. Kinesis Data Streams **vs** Kinesis Data Firehose
 
 
 # REVIEW QUESTIONS
+
+**ERROR:** 1A 2B 8A
+
+**OK:** 3A 4B 5D 6B 7B 9B 10D 11C 12D
+
+**QUESTION 1**: 
+You are building an ML solution to identify anomalies in sensor readings from a factory. The
+sensor publishes numerical data every second. What kind of data is sensor data?
+
+**ANSWER**: B. The data is unstructured since it is not tabular. It is a time series because the sensor publishes data every second.
+
+**QUESTION 2**: 
+You are building an ML solution to identify the sentiment of news and social media feeds about a company. What kind of data is the incoming news data and what kind of ingestion use case is it?
+
+**ANSWER**: D. The data is unstructured since it is not tabular. It is textual data and the use case is streaming as social media feeds can directly stream data into AWS or news can be streamed in by calling the news APIs
+
+**QUESTION 8**: 
+You have data incoming from a number of IoT devices that are deployed on your factory floor. You want to take the inputs from these devices and run some interactive SQL queries on the data to power a real- time dashboard as well as set up alarms to alert admins when there is an issue. What AWS streaming services can you use to build this solution?
+
+OPTION A: Use Kinesis Firehose to ingest the data and output to ElasticSearch. Run a real- time dashboard using Kibana on top.
+
+OPTION B: Use Kinesis Data Streams to ingest the data and use EC2 as a consumer to run SQL queries. Send the outputs to these queries to a custom dashboard application.
+
+OPTION C: Ingest streaming data with Kinesis Data Streams but use Kinesis Data Analytics to run SQL queries over windowed streaming data. Create alerts on the incoming data stream as well. Send the outputs to Kinesis Data Streams to output to a DynamoDB table. Build your dashboard on the DynamoDB table.
+
+OPTION D: Ingest the data into S3 using S3 copy APIs. Use Amazon Athena to run SQL queries on the S3 data and send the outputs to a custom dashboard built using QuickSight.
+
+**ANSWER**: C. Option A does not work since you cannot run custom SQL queries or alarms on Kinesis Firehose. 
+Option D does not work because this is a streaming data use case and S3 copy is not a good solution for ingesting streaming data into AWS. 
+You can build a custom SQL-based database to write SQL queries on EC2, but that would be complex to build on incoming streaming data.
