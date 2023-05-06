@@ -169,6 +169,80 @@ Once your data is in S3, you can run ETL jobs on the data using Amazon EMR.
 
 ## STREAMING DATA COLLECTION
 
+
+4 Kinesis services:
+- Kinesis Data Streams
+- Kinesis Data Firehose
+- Kinesis Data Analytics
+- Kinesis Video Streams
+
+**Kinesis Data Streams**
+
+- Collect and process large streams of data records in real time. 
+- Once the data streams are in AWS, you can run a number of downstream applications such as real-time data analytics by sending the data to a dashboard. 
+- Similarly, you can intake logs from different applications and sensors and process them and generate real-time metrics and reports.
+
+- **Data stream** 
+  - Represents a group of data records, where a data record is a unit of data.
+  - Data records are distributed into shards. 
+  - A shard represents a sequence of data records.
+  - Each shard supports 
+    - 5 transactions/second for reads or 
+    - up to 2 MB per second 
+    - and 1000 records/second 
+    - up to 1 MB per second for writes. 
+    - When you create a Kinesis Data Stream, you specify the number of shards.
+    
+- **Retention period**
+  - Length of time the data is available in the stream. 
+  - Default is 24 hours.
+  - Can increase it to 365 days (8,760 hours).
+  
+- **Producer**
+  - Puts records into the streams such as a web log server. 
+  - Use KPL (Kinesis Producer Library) to build your producer application.
+
+- **Consumer**
+  - Gets records from the stream and processes them. 
+  - Consumer applications often run on a fleet of EC2 instances. 
+  - KCL (Kinesis Client Library) abstracts a lot of the lower-level Kinesis data streams APIs to allow you to:
+    - manage your consumer applications
+    - distribute load across consumers
+    - respond to instance failures
+    - checkpoint records.
+
+- **Downstream AWS Services** 
+  - Include services such as S3, EMR, and Redshift 
+  - Consumers send the outputs of the processed stream to them for various end applications.
+ 
+**Kinesis Data Firehose**
+
+If you need send streaming data directly to an end service such as: 
+- Amazon S3 for storage 
+- Redshift for querying
+- Elastic Search/Splunk 
+- Other custom third-party endpoint
+  - Datadog
+
+you can use
+- Kinesis Data Streams:  you need write producer-consumer applications
+- Kinesis Data Firehose: (aka KDF) is simpler!
+
+KDF can:
+- automatically deliver your data to the services just listed
+- convert incoming JSON to another format (Parquet, ORC, etc) before storing in S3.
+- allow use **AWS Lambda functions** to process incoming data stream before final delivery
+
+
+**Kinesis Data Analytics**
+
+- Run SQL directly on streaming data.
+- Output can be sent to Kinesis Data Streams or to Firehose (and then send to S3, Redshift, ElasticSearch, Splunk).
+- Can generate metrics or aggregated analysis over windows for timeseries data, and send to S3 of data warehouse.
+- Can feed real-time dashboards 
+
+
+
 # SUMMARY
 
 In this chapter, we covered:
