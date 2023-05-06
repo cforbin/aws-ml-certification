@@ -243,7 +243,36 @@ KDF can:
 - Can feed real-time dashboards.
 - Streaming SQL is different from standard SQL queries on batch data
 since the query must occur over a particular time window
-- [Streaming SQL Concepts](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/streaming-sql-concepts.html)
+
+**Kinesis Video Streams**
+
+- Capture massive amounts of live video from sources like 
+  - webcams, 
+  - embedded cameras in cars, 
+  - drone footage, 
+  - security cameras, and 
+  - smartphones. 
+
+- Can use with non-video streams:
+  - audio data
+  - RADAR and LIDAR data
+
+- Works similar to data streams
+  - **Producer**: any video-generating device
+  - **Consumer**: an EC2-based application that processes and analyzes video data
+ 
+- *Amazon Rekognition Video* can be used as a downstream service of KVS.
+
+
+**Kafka-Based Applications**
+
+- A common open-source tool for streaming data is Apache Kafka. 
+- Kafka and Kinesis are similar:
+  - decoupled producer
+  - consumer-based model  
+- Amazon MSK = Amazon Managed Streaming for Kafka
+- You can migrate applications based on Kafka to AWS, and use MSK.
+
 
 # SUMMARY
 
@@ -258,12 +287,26 @@ In this chapter, we covered:
 
 # RECOMMENDED
 
+*Recommended reading for Kinesis*
+
+[FAQ Kinesis Data Streams](https://aws.amazon.com/kinesis/data-streams/faqs/)
+
+[FAQ Kinesis Data Firehose](https://aws.amazon.com/kinesis/data-firehose/faqs/)
+
+[FAQ Kinesis Data Analytics](https://aws.amazon.com/kinesis/data-analytics/faqs/)
+
+[Streaming SQL Concepts](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/streaming-sql-concepts.html)
+
+[FAQ Kinesis Video Streams](https://aws.amazon.com/kinesis/video-streams/faqs/)
+
+[FAQ Amazon Managed Streaming for Kafka](https://aws.amazon.com/msk/faqs/)
 
 
-*We recommend that you go over the FAQs for AWS Data Pipeline, AWS
-Glue, and AWS DMS prior to taking the test.*
+*Recommended reading FAQs for AWS data services*
 
 [FAQ AWS Data Pipelines](https://aws.amazon.com/datapipeline/faqs/)
+
+[Data Pipelines activities](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-concepts-activities.html)
 
 [FAQ AWS Glue](https://aws.amazon.com/glue/faqs/)
 
