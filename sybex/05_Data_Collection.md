@@ -169,7 +169,6 @@ Once your data is in S3, you can run ETL jobs on the data using Amazon EMR.
 
 ## STREAMING DATA COLLECTION
 
-
 4 Kinesis services:
 - Kinesis Data Streams
 - Kinesis Data Firehose
@@ -237,11 +236,14 @@ KDF can:
 **Kinesis Data Analytics**
 
 - Run SQL directly on streaming data.
-- Output can be sent to Kinesis Data Streams or to Firehose (and then send to S3, Redshift, ElasticSearch, Splunk).
-- Can generate metrics or aggregated analysis over windows for timeseries data, and send to S3 of data warehouse.
-- Can feed real-time dashboards 
-
-
+- Input:  KDS, KDF, S3
+- Output: KDS, KDF
+- KDF --> Redshift, ElasticSearch, Splunk, S3
+- Can generate metrics or aggregated analysis over windows for timeseries data.
+- Can feed real-time dashboards.
+- Streaming SQL is different from standard SQL queries on batch data
+since the query must occur over a particular time window
+- [Streaming SQL Concepts](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/streaming-sql-concepts.html)
 
 # SUMMARY
 
