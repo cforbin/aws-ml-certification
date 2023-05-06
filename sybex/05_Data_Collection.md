@@ -2,16 +2,16 @@
 # CHAPTER 5 : DATA COLLECTION
 
 Data Collection
-- Basic Data Concepts
+- [Basic Data Concepts](#BDC)
 - Data Repositories
 - Data Migration to AWS
   - Batch Data Collection
   - Streaming Data Collection
-- Summary
+- [Summary](#SUMMA)
 - Exam Essentials
 - Review Questions
 
-# BASIC DATA CONCEPTS
+# [BASIC DATA CONCEPTS][BDC]
 
 ## 3 kinds of data
 
@@ -274,7 +274,7 @@ since the query must occur over a particular time window
 - You can migrate applications based on Kafka to AWS, and use MSK.
 
 
-# SUMMARY
+# [SUMMARY][SUMMA]
 
 In this chapter, we covered:
 - terminology for data in general
